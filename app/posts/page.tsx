@@ -1,16 +1,25 @@
 import React from 'react'
 
 export const getPosts = async() => {
-const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-const data = await res.json();
-return data;
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return data;
 }
 
-export default async function page() {
+export default async function Page() { 
     const posts = await getPosts();
+    
   return (
-    <div>
-     <p>{JSON.stringify(posts)}</p>
+    <div className="p-5">
+      <h1 className="text-xl font-bold mb-4">Posts List</h1>
+      {posts.map((singlePost) => {
+        return (
+          <div key={singlePost.id} className="border-b py-2">
+            <h2 className="font-semibold text-blue-600"> {singlePost.title} </h2>
+            <p className="text-gray-600"> {singlePost.body} </p>
+          </div>
+        )
+      })}
     </div>
   )
 }
