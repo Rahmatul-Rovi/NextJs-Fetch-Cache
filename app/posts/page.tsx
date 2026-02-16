@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 export const getPosts = async() => {
@@ -17,6 +18,7 @@ export default async function Page() {
           <div key={singlePost.id} className="border-b py-2">
             <h2 className="font-semibold text-blue-600"> {singlePost.title} </h2>
             <p className="text-gray-600"> {singlePost.body} </p>
+            <Link href="/posts/${singlePost.id}">Details</Link>
           </div>
         )
       })}

@@ -5,7 +5,7 @@ export default async function SinglePost({params}) {
     console.log(p.id);
   return (
     <div>
-      
+      <h2>SinglePost {p.id}</h2>
     </div>
   )
 }
