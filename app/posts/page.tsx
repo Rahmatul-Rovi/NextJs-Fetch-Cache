@@ -17,7 +17,7 @@ export default async function Page() {
         return (
           <div key={singlePost.id} className="border-b py-2">
             <h2 className="font-semibold text-blue-600"> {singlePost.title} </h2>
-            <p className="text-gray-600"> {singlePost.body} </p>
+            <p className="text-gray-600 testing-purpose-css-class"> {singlePost.body} </p>
             <Link href="/posts/${singlePost.id}">Details</Link>
           </div>
         )
