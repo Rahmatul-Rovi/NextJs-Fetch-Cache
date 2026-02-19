@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import style from './post.module.css';
 
 export const getPosts = async() => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
