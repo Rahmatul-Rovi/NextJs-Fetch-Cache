@@ -6,11 +6,13 @@ export const getSinglePost = async (post_id)=>{
   return res.json();
 }
 export default async function SinglePost({params}) {
-    const { id } = await params;
-    
+    const p = await params;
+    const singlePost = await getSinglePost(p.id)
     return (
       <div className="p-10">
-        <h2 className="text-2xl">Single Post ID: {id}</h2>
+        <h2 className="text-2xl">Single Post ID: {JSON.stringify(singlePost)}</h2>
+        <h1>{singlePost.title}</h1>
+        <p>{singlePost.body}</p>
       </div>
     )
 }
