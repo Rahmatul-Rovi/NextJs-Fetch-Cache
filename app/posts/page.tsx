@@ -3,9 +3,10 @@ import React from 'react';
 import style from './post.module.css';
 
 export const getPosts = async() => {
+
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await res.json();
-  return data;
+  if (!res.ok) throw new Error("Failed to fetch posts");
+  return res.json();
 }
 
 export default async function Page() { 
@@ -19,7 +20,7 @@ export default async function Page() {
           <div key={singlePost.id} className="border-b py-2">
             <h2 className={`font-semibold text-blue-600 ${style["post-title"]}`}> {singlePost.title} </h2>
             <p className="text-gray-600 testing-purpose-css-class"> {singlePost.body} </p>
-            <Link href="/posts/${singlePost.id}">Details</Link>
+            <Link href={`/posts/${singlePost.id}`} className="text-blue-400 underline">Details</Link>
           </div>
         )
       })}
