@@ -12,6 +12,11 @@ export const getPosts = async() => {
 export default async function Page() { 
     const posts = await getPosts();
     
+   export const metadata: Metadata = {
+  title: "All Posts | Learning Next App",
+  description: "Loading JSON placeholder posts using server component",
+};
+
   return (
     <div className="p-5">
       <h1 className="text-xl font-bold mb-4">Posts List</h1>
