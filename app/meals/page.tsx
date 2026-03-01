@@ -1,11 +1,11 @@
 import MealSearchInput from "./components/MealSearchInput";
 
-export default async function MealsPage({ searchParams }) {
-    // searchParams ke await kora thik ase
-    const query = await searchParams;
-    const searchTerm = query.search || ""; 
+export const metadata: Metadata = {
+  title: "All Meals",
+  description: "Meals Loaded from MealDB API",
+};
 
-    const fetchMeals = async () => {
+  const fetchSingleMeal = async () => {
         try {
             const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`);
             const data = await res.json();
@@ -16,7 +16,15 @@ export default async function MealsPage({ searchParams }) {
         }
     };
 
-    const meals = await fetchMeals();
+
+export default async function singleMealPage({ params }) {
+    // searchParams ke await kora thik ase
+    const p = await params;
+    const searchTerm = query.search || ""; 
+
+  
+
+    const meals = await fetchSingleMeal();
 
     return (
         <div className="p-5">

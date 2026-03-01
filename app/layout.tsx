@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   title: {
     default:  "Learning Next App",
     template: "%s | Learning Next App"
-  }
+  },
+  keywords: ['Next JS', 'React', 'JavaScript', 'Learning', 'PlayGround']
   description: "Trying to learn NextJS as best as we can",
 };
 
