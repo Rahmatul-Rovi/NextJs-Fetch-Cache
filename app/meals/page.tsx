@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MealSearchInput from "./components/MealSearchInput";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "All Meals",
@@ -48,7 +49,7 @@ export default async function singleMealPage({ params }) {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {meals.map((meal) => (
                             <div key={meal.idMeal} className="border p-3 rounded">
-                                <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 object-cover" />
+                                <Image src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 object-cover" />
                                 <h3 className="font-bold mt-2">{meal.strMeal}</h3>
                                 <Link href={`/meals/{singleMeal.idMeal}`}> Details </Link>
                             </div>
