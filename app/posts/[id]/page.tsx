@@ -6,14 +6,16 @@ export const getSinglePost = async (post_id)=>{
   return res.json();
 }
 
-export async function generateMetadata({params, searchParams},parent){
+export async function generateMetadata({params}){
   const id= (await params).id;
-  const product = await fetch(`https://.../${id}`).then(res => res.json())
+
+  const singlrPost = await getSinglePost(id);
 
   const previousImages = (await parent).openGraph?.images || []
    
   return{
-    
+    title: singlePost.title,
+    description: singlePost.body,
   }
 }
 
