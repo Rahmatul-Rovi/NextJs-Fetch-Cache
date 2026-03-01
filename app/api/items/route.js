@@ -10,3 +10,12 @@ export async function GET(){
 
     return Response.Json({data});
 }
+
+
+
+export async function POST(req){
+     
+    const postedData = req.body;
+
+    return Response.Json({postedData});
+}
