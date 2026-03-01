@@ -6,10 +6,8 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {
         protocol: 'https',
-        hostname: 'assets.example.com',
-        port: '',
-        pathname: '/account123/**',
-        search: '',
+        hostname: 'www.themealdb.com',
+  
       },
     ],
   }
