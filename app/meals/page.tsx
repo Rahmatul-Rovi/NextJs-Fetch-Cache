@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MealSearchInput from "./components/MealSearchInput";
 
 export const metadata: Metadata = {
@@ -5,9 +6,9 @@ export const metadata: Metadata = {
   description: "Meals Loaded from MealDB API",
 };
 
-  const fetchSingleMeal = async () => {
+  const fetchSingleMeal = async (id) => {
         try {
-            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`);
+            const res = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
             const data = await res.json();
             return data.meals || []; 
         } catch (error) {
@@ -16,11 +17,23 @@ export const metadata: Metadata = {
         }
     };
 
+    export async function generateMetadata({params}){
+      const id= (await params).id;
+    
+      const singleMeal = await getSinglePost(id);
+    
+      const previousImages = (await parent).openGraph?.images || []
+       
+      return{
+        title: singleMeal.strMeal,
+        description: singlemeal.strInstructions,
+      }
+    }
 
 export default async function singleMealPage({ params }) {
     // searchParams ke await kora thik ase
     const p = await params;
-    const searchTerm = query.search || ""; 
+    const singleMeal = await fetchSingleMeal(p?.id);
 
   
 
@@ -37,7 +50,9 @@ export default async function singleMealPage({ params }) {
                             <div key={meal.idMeal} className="border p-3 rounded">
                                 <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 object-cover" />
                                 <h3 className="font-bold mt-2">{meal.strMeal}</h3>
+                                <Link href={`/meals/{singleMeal.idMeal}`}> Details </Link>
                             </div>
+                            
                         ))}
                     </div>
                 ) : (

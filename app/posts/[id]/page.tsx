@@ -9,7 +9,7 @@ export const getSinglePost = async (post_id)=>{
 export async function generateMetadata({params}){
   const id= (await params).id;
 
-  const singlrPost = await getSinglePost(id);
+  const singlePost = await getSinglePost(id);
 
   const previousImages = (await parent).openGraph?.images || []
    
