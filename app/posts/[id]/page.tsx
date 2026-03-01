@@ -5,6 +5,19 @@ export const getSinglePost = async (post_id)=>{
   if (!res.ok) throw new Error("Failed to fetch posts");
   return res.json();
 }
+
+export async function generateMetadata({params, searchParams},parent){
+  const id= (await params).id;
+  const product = await fetch(`https://.../${id}`).then(res => res.json())
+
+  const previousImages = (await parent).openGraph?.images || []
+   
+  return{
+    
+  }
+}
+
+
 export default async function SinglePost({params}) {
     const p = await params;
     const singlePost = await getSinglePost(p.id)
