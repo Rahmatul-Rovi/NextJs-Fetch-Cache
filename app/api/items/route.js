@@ -1,14 +1,11 @@
 import { response } from "express";
+import dbConnect from "../../lib/dbConnect";
 
 export async function GET(){
      
-    const data = {
-        message: "Successfully get Data",
-        error: false,
-        status: 200
-    }
+   const data = await dbConnect("users").find({}).toArray()
 
-    return Response.Json({data});
+    return Response.Json(data);
 }
 
 
