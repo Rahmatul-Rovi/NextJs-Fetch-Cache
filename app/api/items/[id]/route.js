@@ -1,7 +1,9 @@
+import { ObjectId } from "mongodb";
+import dbConnect from "../../lib/dbConnect";
 export async function GET(req, params){
      
    const p = await params;
-   console.log(p);
+   const singleData = await dbConnect("users").findOne({_id: new ObjectId(p.id)})
 
     return Response.Json({params:p});
 }
