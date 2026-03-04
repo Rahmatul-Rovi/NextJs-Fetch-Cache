@@ -1,10 +1,27 @@
-export async function GET(){
+export async function GET(req, params){
      
-    const data = {
-        message: "Successfully get Data",
-        error: false,
-        status: 200
-    }
+   const p = await params;
+   console.log(p);
 
-    return Response.Json({data});
+    return Response.Json({params:p});
+}
+
+
+
+export async function DELETE(req, params){
+     
+   const p = await params;
+   console.log(p);
+
+    return Response.Json({params:p});
+}
+
+
+
+export async function PATCH(req, params){
+     
+   const p = await params;
+   console.log(p);
+
+    return Response.Json({params:p});
 }
