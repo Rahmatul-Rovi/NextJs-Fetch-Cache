@@ -12,10 +12,10 @@ export async function GET(req, {params}){
 
 export async function DELETE(req, {params}){
      
-   const p = await params;
-   console.log(p);
+  const p = await params;
+   const response = await dbConnect("users").deleteOne({_id: new ObjectId(p.id)})
 
-    return Response.Json({params:p});
+    return Response.Json(response);
 }
 
 
