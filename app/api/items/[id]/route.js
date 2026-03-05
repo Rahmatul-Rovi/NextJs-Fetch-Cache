@@ -23,7 +23,7 @@ export async function DELETE(req, {params}){
 export async function PATCH(req, {params}){
      
    const p = await params;
-   console.log(p);
+   const singleData = await dbConnect("users").updateOne({_id: new ObjectId(p.id)})
 
-    return Response.Json({params:p});
+    return Response.Json(singleData);
 }
