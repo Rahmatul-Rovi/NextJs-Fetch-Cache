@@ -23,7 +23,9 @@ export async function DELETE(req, {params}){
 export async function PATCH(req, {params}){
      
    const p = await params;
-   const singleData = await dbConnect("users").updateOne({_id: new ObjectId(p.id)})
+   const postedData = await req.json()
+   const filter = {_id: new ObjectId(p.id)};
+   const updatedResponse = await dbConnect("users").updateOne(filter, {$set: {...postedData}}, {upsert: true})
 
-    return Response.Json(singleData);
+    return Response.Json(updatedResponse);
 }
