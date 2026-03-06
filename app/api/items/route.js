@@ -1,5 +1,6 @@
 import { response } from "express";
 import dbConnect from "../../lib/dbConnect";
+import { revalidatePath } from "next/cache";
 
 export async function GET(){
      
@@ -15,5 +16,6 @@ export async function POST(req){
     const postedData = req.body;
 
     const result = await dbConnect("users").insertOne(postedData)
+    revalidatePath("/products")
     return Response.Json(result);
 }
