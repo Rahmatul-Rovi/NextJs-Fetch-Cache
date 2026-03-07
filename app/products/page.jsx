@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import React from 'react'
 
 export default function productsPage() {
@@ -5,6 +6,11 @@ export default function productsPage() {
       cache: "force-cache",
     });
     const data = await res.json();
+   
+    if(data.length > 3){
+       redirect("/")
+    }
+  
   return (
     <ul>
       {
