@@ -7,7 +7,7 @@ export default function productsPage() {
     // });
     // const data = await res.json();
    
- const data = await dbConnect("practice_data").find({}).toArray();
+
   
   return (
     <ul>
