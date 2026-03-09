@@ -5,6 +5,11 @@ const uri = process.env.MONGODB_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 
+export const collectionNames = {
+  TEST_USER: "nextjs_fetch",
+  PRACTICE_DATA:"practice_data"
+}
+
 function dbConnect (collectionName) {
     const client = new MongoClient(uri, {
   serverApi: {

@@ -18,7 +18,7 @@ providers: [
     async authorize(credentials, req) {
       // Add logic here to look up the user from the credentials supplied
       const {username, password} = credentials
-      const user = await dbConnect("nextjs_fetch").findOne({username})
+      const user = await dbConnect(collectionNames.TEST_USER).findOne({username})
       const isPasswordOk = password == user.password
     //  const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
 
