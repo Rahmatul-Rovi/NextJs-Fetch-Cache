@@ -29,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <NextAuthSessionProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Navbar></Navbar>
         {children}
       </body>
+      </NextAuthSessionProvider>
     </html>
   );
 }
