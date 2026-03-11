@@ -47,8 +47,19 @@ providers: [
 callbacks: {
   async signIn({user, account, profile, email, credentials }){
     if(account){
-      console.log("From SignIn CallBack", {user, account, profile, email, credentials} )
+      try {
+           //console.log("From SignIn CallBack", {user, account, profile, email, credentials} )
+       const {providerAccountId, provider} = account;
+    const { email: user_email , image, name} = user;
+    const payload = {providerAccountId, provider, email:user_email, image, name }
+    console.log( "From SignIn CallBack", payload)
+    
+      } catch (error) {
+        
+      }
+   
     }
+   
     return true;
   }
   async session ({session, token, user}){
