@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import {authOptions} from "./api/auth/[...nextauth]/route";
+import LogoutButton from "./meals/components/LogoutButton";
 
 export default function Home() {
   const session = await getServerSession(authOptions)
@@ -63,6 +64,7 @@ export default function Home() {
           </a>
         </div>
         <p className="font-bold text-xl">From Client Component</p>
+        {session?.user ? (<LogoutButton/>) : () }
       </main>
     </div>
   );
