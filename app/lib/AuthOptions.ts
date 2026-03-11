@@ -45,6 +45,12 @@ providers: [
   })
 ]
 callbacks: {
+  async signIn({user, account, profile, email, credentials }){
+    if(account){
+      console.log("From SignIn CallBack", {user, account, profile, email, credentials} )
+    }
+    return true;
+  }
   async session ({session, token, user}){
     if(token){
       session.user.username = token.username;
