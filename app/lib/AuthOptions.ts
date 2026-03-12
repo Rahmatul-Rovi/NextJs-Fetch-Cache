@@ -53,9 +53,15 @@ callbacks: {
     const { email: user_email , image, name} = user;
     const payload = {providerAccountId, provider, email:user_email, image, name }
     console.log( "From SignIn CallBack", payload)
-    
+
+    const userCollection = await dbConnect(collectionNames.TEST_USER)
+    const isUserExist = await userCollection.findOne({providerAccountId})
+
+    if(!isUserExist)
+        await userCollection.insertOne(payload)
       } catch (error) {
-        
+        console.log(error)
+        return false
       }
    
     }
